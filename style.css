@@ -1,0 +1,23 @@
+.half-circle {
+    width: 100%;
+    height: 200%;
+    background-color: #292D32;
+    border-radius: 60%;
+    position: absolute;
+    right: -60%;
+    top: -50%;
+    z-index: 0;
+}
+
+nav {
+    position: relative;
+    z-index: 10;
+}
+
+.nav-links {
+    margin-right: 700px; /* Tambahkan margin untuk menggeser ke kiri */
+}
+
+.nav-links a.active {
+    color: rgb(49, 29, 224);
+}
