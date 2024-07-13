@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Koki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            to {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.3s forwards;
+        }
+
+        .animate-fade-out {
+            animation: fadeOut 0.3s forwards;
+        }
+    </style>
+</head>
+
+<body class="flex">
+
+    <!-- Side Navbar -->
+    <div class="w-64 bg-gray-800 text-white min-h-screen p-4 flex flex-col justify-between">
+        <div>
+            <div class="flex flex-col items-center mb-8">
+                <div class="rounded-full flex items-center justify-center">
+                    <!-- Icon Orang -->
+                    <img src="../../assets/icon/iconKoki.svg" alt="Icon Orang" class="w-36 h-36">
+                </div>
+                <div class="mt-2 text-center text-lg">
+                    <p class="text-base mb-2">Welcome,</p>
+                    <p class="font-bold">{ Nama Lengkap Koki }</p>
+                </div>
+            </div>
+
+            <nav>
+                <ul>
+                    <li class="mb-4">
+                        <a href="#"
+                            class="flex items-center text-lg p-3 rounded-lg hover:bg-blue-300 hover:text-white bg-blue-500">
+                            <!-- Icon Menu -->
+                            <img src="../../assets/icon/iconMenu.svg" alt="Icon Menu" class="h-10 w-10 text-white mr-4">
+                            <span>Menu</span>
+                        </a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="pesananKoki.html"
+                            class="flex items-center text-lg p-3 rounded-lg hover:bg-blue-300 hover:text-white ">
+                            <!-- Icon Pesanan -->
+                            <img src="../../assets/icon/iconPesanan.svg" alt="Icon Pesanan"
+                                class="h-10 w-10 text-white mr-4">
+                            <span>Pesanan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="notifikasiKoki.html"
+                            class="flex items-center text-lg p-3 rounded-lg hover:bg-blue-300 hover:text-white ">
+                            <!-- Icon Notifikasi -->
+                            <img src="../../assets/icon/iconNotif.svg" alt="Icon Notifikasi"
+                                class="h-10 w-10 text-white mr-4">
+                            <span>Notifikasi</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="mt-8">
+            <button id="logoutButton"
+                class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-3xl">
+                Logout
+            </button>
+        </div>
+    </div>
+
+    <!-- Body -->
+    <div class="flex-1 p-4">
+        <!-- Konten body akan ditempatkan di sini -->
+        <h1 class="text-2xl font-bold">MENU KOKI</h1>
+        <p>Selamat datang di Menu koki. Di sini Anda bisa mengelola <span class="font-bold italic">MENU MAKANAN</span>
+        </p>
+    </div>
+
+    <!-- Popup Alert -->
+    <div id="logoutPopup" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+        <div id="alertBox"
+            class="bg-blue-900 p-8 rounded-lg shadow-lg text-center text-white max-w-lg w-full rounded-3xl">
+            <img src="../../assets/icon/iconLogout.svg" alt="Icon Logout Berhasil" class="w-16 h-16 mx-auto mb-6">
+            <p class="mb-6 text-lg">Anda berhasil Logout</p>
+            <button id="okButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold w-24 h-10 rounded-lg">
+                OK
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('logoutButton').addEventListener('click', function () {
+            const alertBox = document.getElementById('alertBox');
+            document.getElementById('logoutPopup').classList.remove('hidden');
+            alertBox.classList.remove('animate-fade-out');
+            alertBox.classList.add('animate-fade-in');
+        });
+
+        document.getElementById('okButton').addEventListener('click', function () {
+            const alertBox = document.getElementById('alertBox');
+            alertBox.classList.remove('animate-fade-in');
+            alertBox.classList.add('animate-fade-out');
+            alertBox.addEventListener('animationend', function () {
+                document.getElementById('logoutPopup').classList.add('hidden');
+                window.location.href = '../../login/loginKoki.html';
+            }, { once: true });
+        });
+    </script>
+</body>
+
+</html>
