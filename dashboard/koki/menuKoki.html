@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Halaman Koki</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -45,15 +45,14 @@
     </style>
 </head>
 
-<body class="flex">
-
+<body class="flex bg-white">
     <!-- Side Navbar -->
     <div class="w-64 bg-gray-800 text-white min-h-screen p-4 flex flex-col justify-between">
         <div>
             <div class="flex flex-col items-center mb-8">
                 <div class="rounded-full flex items-center justify-center">
                     <!-- Icon Orang -->
-                    <img src="../../assets/icon/iconKoki.svg" alt="Icon Orang" class="w-36 h-36">
+                    <img src="../../assets/icon/iconKoki.svg" alt="Icon Orang" class="w-36 h-36" />
                 </div>
                 <div class="mt-2 text-center text-lg">
                     <p class="text-base mb-2">Welcome,</p>
@@ -67,25 +66,26 @@
                         <a href="#"
                             class="flex items-center text-lg p-3 rounded-lg hover:bg-blue-300 hover:text-white bg-blue-500">
                             <!-- Icon Menu -->
-                            <img src="../../assets/icon/iconMenu.svg" alt="Icon Menu" class="h-10 w-10 text-white mr-4">
+                            <img src="../../assets/icon/iconMenu.svg" alt="Icon Menu"
+                                class="h-10 w-10 text-white mr-4" />
                             <span>Menu</span>
                         </a>
                     </li>
                     <li class="mb-4">
                         <a href="pesananKoki.html"
-                            class="flex items-center text-lg p-3 rounded-lg hover:bg-blue-300 hover:text-white ">
+                            class="flex items-center text-lg p-3 rounded-lg hover:bg-blue-300 hover:text-white">
                             <!-- Icon Pesanan -->
                             <img src="../../assets/icon/iconPesanan.svg" alt="Icon Pesanan"
-                                class="h-10 w-10 text-white mr-4">
+                                class="h-10 w-10 text-white mr-4" />
                             <span>Pesanan</span>
                         </a>
                     </li>
                     <li>
                         <a href="notifikasiKoki.html"
-                            class="flex items-center text-lg p-3 rounded-lg hover:bg-blue-300 hover:text-white ">
+                            class="flex items-center text-lg p-3 rounded-lg hover:bg-blue-300 hover:text-white">
                             <!-- Icon Notifikasi -->
                             <img src="../../assets/icon/iconNotif.svg" alt="Icon Notifikasi"
-                                class="h-10 w-10 text-white mr-4">
+                                class="h-10 w-10 text-white mr-4" />
                             <span>Notifikasi</span>
                         </a>
                     </li>
@@ -95,48 +95,174 @@
 
         <div class="mt-8">
             <button id="logoutButton"
-                class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-3xl">
-                Logout
-            </button>
+                class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-3xl">Logout</button>
         </div>
     </div>
 
     <!-- Body -->
-    <div class="flex-1 p-4">
+    <div class="flex-1 p-12 relative">
         <!-- Konten body akan ditempatkan di sini -->
-        <h1 class="text-2xl font-bold">MENU KOKI</h1>
-        <p>Selamat datang di Menu koki. Di sini Anda bisa mengelola <span class="font-bold italic">MENU MAKANAN</span>
-        </p>
+        <div class="flex items-center justify-between">
+            <img src="../../assets/icon/iconMenu.svg" alt="Icon Menu" class="w-12 h-12 mx-4" />
+            <!-- Wrapper untuk tombol update dan icon resto -->
+            <img src="../../assets/icon/iconResto.svg" alt="Icon Resto"
+                class="flex flex-col items-end absolute right-10 top-4 w-36 h-36 mb-1" />
+        </div>
+        <h1 class="text-2xl font-bold py-4">Menu</h1>
+        <div class="flex items-center space-x-2">
+            <p class="text-gray-700">Show</p>
+            <div class="relative text-left stroke-black">
+                <select name="amountOrder" id="amountOrder" class="border-2 border-black p-2 rounded-lg">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+            <span class="font-bold">MENU</span>
+            <div class="relative flex-1">
+                <input type="text" class="border-2 border-black p-2 pl-10 rounded-lg" placeholder="Search..." />
+                <img src="../../assets/icon/iconSearch.svg" alt="Search Icon"
+                    class="absolute left-2 top-1/2 transform -translate-y-1/2 w-6 h-6" />
+                <button class="p-3 text-sm bg-blue-200 rounded-3xl ms-1">Cari</button>
+            </div>
+            <button type="button" class="bg-violet-700 rounded-2xl p-3 text-white text-sm">+ Update Menu</button>
+        </div>
+
+        <!-- Tabel -->
+        <div class="overflow-auto mt-6 rounded-2xl border-2 border-grey">
+            <table class="w-full table-auto border-collapse">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="border p-4">Jenis</th>
+                        <th class="border p-4">Product</th>
+                        <th class="border p-4">Harga</th>
+                        <th class="border p-4">Stock Bahan</th>
+                        <th class="border p-4">Status</th>
+                        <th class="border p-4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border p-4">Makanan</td>
+                        <td class="border p-4">Bakso Urat</td>
+                        <td class="border p-4"><span class="harga">20000</span></td>
+                        <td class="border p-4 text-center">100</td>
+                        <td class="border p-4">
+                            <div class="flex justify-center items-center">
+                                <button class="p-4 bg-green-100 text-green-600 rounded-full text-sm">Ready</button>
+                            </div>
+                        </td>
+                        <td class="border p-4">
+                            <div class="flex space-x-2 justify-center">
+                                <img src="../../assets/icon/iconEdit.svg" alt="Icon Edit" />
+                                <img src="../../assets/icon/iconDelete.svg" alt="Icon Delete" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border p-4">Makanan</td>
+                        <td class="border p-4">Bakso Urat</td>
+                        <td class="border p-4"><span class="harga">20000</span></td>
+                        <td class="border p-4 text-center">-</td>
+                        <td class="border p-4">
+                            <div class="flex justify-center items-center">
+                                <button class="p-4 bg-red-600 text-white rounded-full text-sm">Bahan Habis</button>
+                            </div>
+                        </td>
+                        <td class="border p-4">
+                            <div class="flex space-x-2 justify-center">
+                                <img src="../../assets/icon/iconEdit.svg" alt="Icon Edit" />
+                                <img src="../../assets/icon/iconDelete.svg" alt="Icon Delete" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border p-4">Makanan</td>
+                        <td class="border p-4">Bakso Urat</td>
+                        <td class="border p-4"><span class="harga">20000</span></td>
+                        <td class="border p-4 text-center">100</td>
+                        <td class="border p-4 ">
+                            <div class="flex justify-center items-center">
+                                <button class="p-4 bg-green-100 text-green-600 rounded-full text-sm">Ready</button>
+                            </div>
+                        </td>
+                        <td class="border p-4">
+                            <div class="flex space-x-2 justify-center">
+                                <img src="../../assets/icon/iconEdit.svg" alt="Icon Edit" />
+                                <img src="../../assets/icon/iconDelete.svg" alt="Icon Delete" />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!-- Popup Alert -->
     <div id="logoutPopup" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
         <div id="alertBox"
             class="bg-blue-900 p-8 rounded-lg shadow-lg text-center text-white max-w-lg w-full rounded-3xl">
-            <img src="../../assets/icon/iconLogout.svg" alt="Icon Logout Berhasil" class="w-16 h-16 mx-auto mb-6">
+            <img src="../../assets/icon/iconLogout.svg" alt="Icon Logout Berhasil" class="w-16 h-16 mx-auto mb-6" />
             <p class="mb-6 text-lg">Anda berhasil Logout</p>
-            <button id="okButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold w-24 h-10 rounded-lg">
-                OK
-            </button>
+            <button id="okButton"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold w-24 h-10 rounded-lg">OK</button>
         </div>
     </div>
 
     <script>
-        document.getElementById('logoutButton').addEventListener('click', function () {
-            const alertBox = document.getElementById('alertBox');
-            document.getElementById('logoutPopup').classList.remove('hidden');
-            alertBox.classList.remove('animate-fade-out');
-            alertBox.classList.add('animate-fade-in');
+        document.getElementById("logoutButton").addEventListener("click", function () {
+            const alertBox = document.getElementById("alertBox");
+            document.getElementById("logoutPopup").classList.remove("hidden");
+            s;
+            alertBox.classList.remove("animate-fade-out");
+            alertBox.classList.add("animate-fade-in");
         });
 
-        document.getElementById('okButton').addEventListener('click', function () {
-            const alertBox = document.getElementById('alertBox');
-            alertBox.classList.remove('animate-fade-in');
-            alertBox.classList.add('animate-fade-out');
-            alertBox.addEventListener('animationend', function () {
-                document.getElementById('logoutPopup').classList.add('hidden');
-                window.location.href = '../../login/loginKoki.html';
-            }, { once: true });
+        document.getElementById("okButton").addEventListener("click", function () {
+            const alertBox = document.getElementById("alertBox");
+            alertBox.classList.remove("animate-fade-in");
+            alertBox.classList.add("animate-fade-out");
+            alertBox.addEventListener(
+                "animationend",
+                function () {
+                    document.getElementById("logoutPopup").classList.add("hidden");
+                    window.location.href = "../../login/loginKoki.html";
+                },
+                { once: true }
+            );
+        });
+
+        // Fungsi untuk memformat angka menjadi Rupiah
+        function formatRupiah(angka) {
+            return 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        // Ambil semua elemen dengan class "harga" dan format angkanya
+        document.querySelectorAll('.harga').forEach(function (element) {
+            const angka = element.innerText;
+            element.innerText = formatRupiah(angka);
+        });
+
+        document.getElementById("logoutButton").addEventListener("click", function () {
+            const alertBox = document.getElementById("alertBox");
+            document.getElementById("logoutPopup").classList.remove("hidden");
+            alertBox.classList.remove("animate-fade-out");
+            alertBox.classList.add("animate-fade-in");
+        });
+
+        document.getElementById("okButton").addEventListener("click", function () {
+            const alertBox = document.getElementById("alertBox");
+            alertBox.classList.remove("animate-fade-in");
+            alertBox.classList.add("animate-fade-out");
+            alertBox.addEventListener(
+                "animationend",
+                function () {
+                    document.getElementById("logoutPopup").classList.add("hidden");
+                    window.location.href = "../../login/loginKoki.html";
+                },
+                { once: true }
+            );
         });
     </script>
 </body>

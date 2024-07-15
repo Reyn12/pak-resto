@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Pesanan</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .table-auto th, .table-auto td {
+            padding: 0.75rem;
+            text-align: center;
+        }
+        .table-auto th {
+            background-color: #064e3b;
+            color: white;
+        }
+        .total-row {
+            background-color: #064e3b;
+            color: white;
+            font-weight: bold;
+        }
+        #orderList {
+            min-height: 400px; /* Ensures a large table size */
+            max-height: 400px; /* Keeps the table size consistent */
+            overflow-y: auto;
+        }
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.25rem;
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-large:hover {
+            background-color: #48bb78; /* Lighten green */
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-black flex flex-col items-center justify-center h-screen">
+
+    <div class="bg-white p-8 rounded-lg shadow-lg w-3/4">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold">Total Pesanan</h1>
+        </div>
+
+        <table class="table-auto w-full text-left border-collapse">
+            <thead>
+                <tr>
+                    <th>Pesanan</th>
+                    <th>Harga</th>
+                    <th>QTY</th>
+                    <th>Total Harga</th>
+                </tr>
+            </thead>
+            <tbody id="orderList"></tbody>
+            <tfoot>
+                <tr class="total-row">
+                    <td colspan="3" class="text-right">Total Keseluruhan:</td>
+                    <td id="totalAmount">Rp. 0</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="flex justify-end mt-4">
+            <button class="btn-large bg-green-500 text-white py-2 px-4 rounded shadow-lg" onclick="showConfirmationPopup()">Bayar</button>
+        </div>
+    </div>
+
+    <!-- Confirmation Popup -->
+    <div id="confirmationPopup" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white p-8 rounded shadow-lg text-center">
+            <img src="../../../assets/images/exclamation.png" alt="Warning" class="mx-auto mb-4 w-20 h-20">
+            <h2 class="text-xl font-bold mb-4">Apakah anda yakin untuk melanjutkan pembayaran?</h2>
+            <div class="flex justify-center space-x-4">
+                <button id="proceedButton" class="bg-green-500 text-white py-2 px-4 rounded" onclick="payNow()">Lanjut</button>
+                <button class="bg-gray-500 text-white py-2 px-4 rounded" onclick="closeConfirmationPopup()">Kembali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const orders = JSON.parse(localStorage.getItem('orders')) || {};
+            const orderList = document.getElementById('orderList');
+            let totalAmount = 0;
+
+            for (const [item, details] of Object.entries(orders)) {
+                const tr = document.createElement('tr');
+                const total = details.quantity * parseInt(details.price.replace('Rp. ', '').replace('.', ''));
+                totalAmount += total;
+                tr.innerHTML = `
+                    <td>${item}</td>
+                    <td>${details.price}</td>
+                    <td>${details.quantity}</td>
+                    <td>Rp. ${total.toLocaleString('id-ID')}</td>
+                `;
+                orderList.appendChild(tr);
+            }
+
+            document.getElementById('totalAmount').innerText = `Rp. ${totalAmount.toLocaleString('id-ID')}`;
+        });
+
+        function showConfirmationPopup() {
+            document.getElementById('confirmationPopup').classList.remove('hidden');
+        }
+
+        function closeConfirmationPopup() {
+            document.getElementById('confirmationPopup').classList.add('hidden');
+        }
+
+        function payNow() {
+            const now = new Date();
+            const orderDate = now.toLocaleString('id-ID', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const totalPayment = document.getElementById('totalAmount').innerText;
+
+            localStorage.setItem('orderDate', orderDate);
+            localStorage.setItem('totalPayment', totalPayment);
+
+            // Clear orders from local storage
+            localStorage.removeItem('orders');
+            alert('Pesanan Selesai Dilakukan');
+            window.location.href = 'invoice.html';
+        }
+
+    </script>
+
+</body>
+</html>

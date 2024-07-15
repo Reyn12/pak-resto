@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pesanan Koki</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -45,15 +45,14 @@
     </style>
 </head>
 
-<body class="flex">
-
+<body class="flex bg-white">
     <!-- Side Navbar -->
     <div class="w-64 bg-gray-800 text-white min-h-screen p-4 flex flex-col justify-between">
         <div>
             <div class="flex flex-col items-center mb-8">
                 <div class="rounded-full flex items-center justify-center">
                     <!-- Icon Orang -->
-                    <img src="../../assets/icon/iconKoki.svg" alt="Icon Orang" class="w-36 h-36">
+                    <img src="../../assets/icon/iconKoki.svg" alt="Icon Orang" class="w-36 h-36" />
                 </div>
                 <div class="mt-2 text-center text-lg">
                     <p class="text-base mb-2">Welcome,</p>
@@ -65,9 +64,10 @@
                 <ul>
                     <li class="mb-4">
                         <a href="menuKoki.html"
-                            class="flex items-center text-lg p-3 rounded-lg hover:bg-blue-300 hover:text-white ">
+                            class="flex items-center text-lg p-3 rounded-lg hover:bg-blue-300 hover:text-white">
                             <!-- Icon Menu -->
-                            <img src="../../assets/icon/iconMenu.svg" alt="Icon Menu" class="h-10 w-10 text-white mr-4">
+                            <img src="../../assets/icon/iconMenu.svg" alt="Icon Menu"
+                                class="h-10 w-10 text-white mr-4" />
                             <span>Menu</span>
                         </a>
                     </li>
@@ -76,16 +76,16 @@
                             class="flex items-center text-lg p-3 rounded-lg hover:bg-blue-300 hover:text-white bg-blue-900">
                             <!-- Icon Pesanan -->
                             <img src="../../assets/icon/iconPesanan.svg" alt="Icon Pesanan"
-                                class="h-10 w-10 text-white mr-4">
+                                class="h-10 w-10 text-white mr-4" />
                             <span>Pesanan</span>
                         </a>
                     </li>
                     <li>
                         <a href="notifikasiKoki.html"
-                            class="flex items-center text-lg p-3 rounded-lg hover:bg-blue-300 hover:text-white ">
+                            class="flex items-center text-lg p-3 rounded-lg hover:bg-blue-300 hover:text-white">
                             <!-- Icon Notifikasi -->
                             <img src="../../assets/icon/iconNotif.svg" alt="Icon Notifikasi"
-                                class="h-10 w-10 text-white mr-4">
+                                class="h-10 w-10 text-white mr-4" />
                             <span>Notifikasi</span>
                         </a>
                     </li>
@@ -95,49 +95,143 @@
 
         <div class="mt-8">
             <button id="logoutButton"
-                class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-3xl">
-                Logout
-            </button>
+                class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-3xl">Logout</button>
         </div>
     </div>
 
     <!-- Body -->
-    <div class="flex-1 p-4">
+    <div class="flex-1 p-12 relative">
         <!-- Konten body akan ditempatkan di sini -->
-        <h1 class="text-2xl font-bold">PESANAN KOKI</h1>
-        <p>Selamat datang di Pesanan koki. Di sini Anda bisa mengelola <span class="font-bold italic">PESANAN
-                MAKANAN</span>
-        </p>
-    </div>
+        <div class="flex items-center justify-between">
+            <img src="../../assets/icon/iconPesanan.svg" alt="Icon Pesanan" class="w-12 h-12 mx-4" />
+            <!-- Wrapper untuk tombol update dan icon resto -->
+            <img src="../../assets/icon/iconResto.svg" alt="Icon Resto"
+                class="flex flex-col items-end absolute right-10 top-4 w-36 h-36 mb-1" />
+        </div>
+        <h1 class="text-2xl font-bold py-4">Pesanan</h1>
+        <div class="flex items-center space-x-2">
+            <p class="text-gray-700">Show</p>
+            <div class="relative text-left stroke-black">
+                <select name="amountOrder" id="amountOrder" class="border-2 border-black p-2 rounded-lg">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+            <span class="font-bold">MENU</span>
+            <div class="relative flex-1">
+                <input type="text" class="border-2 border-black p-2 pl-10 rounded-lg" placeholder="Search..." />
+                <img src="../../assets/icon/iconSearch.svg" alt="Search Icon"
+                    class="absolute left-2 top-1/2 transform -translate-y-1/2 w-6 h-6" />
+            </div>
+        </div>
 
+        <!-- Tabel -->
+        <div class="overflow-auto mt-6 rounded-2xl border-2 border-grey">
+            <table class="w-full table-auto border-collapse">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="border p-4">Meja</th>
+                        <th class="border p-4">Detail Pesanan(Kode Pesanan)</th>
+                        <th class="border p-4">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center">
+                        <td class="border p-4 text-center">Makanan</td>
+                        <td class="border p-4 text-center"><a href="#" class="text-blue-500 product-link">P001</a></td>
+                        <td class="border p-4">
+                            <div class="flex space-x-2 justify-center items-center">
+                                <button class="p-4 bg-green-100 text-green-600 rounded-full text-sm">Selesai
+                                    Dimasak</button>
+                                <button class="p-4 bg-yellow-500 text-white rounded-full text-sm">Sedang
+                                    Dimasak</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td class="border p-4 text-center">Makanan</td>
+                        <td class="border p-4 text-center"><a href="#" class="text-blue-500 product-link">P002</a></td>
+                        <td class="border p-4">
+                            <div class="flex space-x-2 justify-center items-center">
+                                <button class="p-4 bg-green-100 text-green-600 rounded-full text-sm">Selesai
+                                    Dimasak</button>
+                                <button class="p-4 bg-yellow-500 text-white rounded-full text-sm">Sedang
+                                    Dimasak</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td class="border p-4">Makanan</td>
+                        <td class="border p-4"><a href="#" class="text-blue-500 product-link">P003</a></td>
+                        <td class="border p-4">
+                            <div class="flex space-x-2 justify-center items-center">
+                                <button class="p-4 bg-green-100 text-green-600 rounded-full text-sm">Selesai
+                                    Dimasak</button>
+                                <button class="p-4 bg-yellow-500 text-white rounded-full text-sm">Sedang
+                                    Dimasak</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Pop-up detail pesanan -->
+    <div id="popup" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-xl font-bold mb-4">Product Info</h2>
+            <p id="popup-content">This is the detailed information for product ID: P001</p>
+            <button id="close-popup" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Close</button>
+        </div>
+    </div>
     <!-- Popup Alert -->
     <div id="logoutPopup" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
         <div id="alertBox"
             class="bg-blue-900 p-8 rounded-lg shadow-lg text-center text-white max-w-lg w-full rounded-3xl">
-            <img src="../../assets/icon/iconLogout.svg" alt="Icon Logout Berhasil" class="w-16 h-16 mx-auto mb-6">
+            <img src="../../assets/icon/iconLogout.svg" alt="Icon Logout Berhasil" class="w-16 h-16 mx-auto mb-6" />
             <p class="mb-6 text-lg">Anda berhasil Logout</p>
-            <button id="okButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold w-24 h-10 rounded-lg">
-                OK
-            </button>
+            <button id="okButton"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold w-24 h-10 rounded-lg">OK</button>
         </div>
     </div>
 
     <script>
-        document.getElementById('logoutButton').addEventListener('click', function () {
-            const alertBox = document.getElementById('alertBox');
-            document.getElementById('logoutPopup').classList.remove('hidden');
-            alertBox.classList.remove('animate-fade-out');
-            alertBox.classList.add('animate-fade-in');
+        document.getElementById("logoutButton").addEventListener("click", function () {
+            const alertBox = document.getElementById("alertBox");
+            document.getElementById("logoutPopup").classList.remove("hidden");
+            alertBox.classList.remove("animate-fade-out");
+            alertBox.classList.add("animate-fade-in");
         });
 
-        document.getElementById('okButton').addEventListener('click', function () {
-            const alertBox = document.getElementById('alertBox');
-            alertBox.classList.remove('animate-fade-in');
-            alertBox.classList.add('animate-fade-out');
-            alertBox.addEventListener('animationend', function () {
-                document.getElementById('logoutPopup').classList.add('hidden');
-                window.location.href = '../../login/loginKoki.html';
-            }, { once: true });
+        document.getElementById("okButton").addEventListener("click", function () {
+            const alertBox = document.getElementById("alertBox");
+            alertBox.classList.remove("animate-fade-in");
+            alertBox.classList.add("animate-fade-out");
+            alertBox.addEventListener(
+                "animationend",
+                function () {
+                    document.getElementById("logoutPopup").classList.add("hidden");
+                    window.location.href = "../../login/loginKoki.html";
+                },
+                { once: true }
+            );
+        });
+
+        const productLinks = document.querySelectorAll(".product-link");
+        productLinks.forEach((link) => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                const productId = this.textContent;
+                const popupContent = document.getElementById("popup-content");
+                popupContent.textContent = `This is the detailed information for product ID: ${productId}`;
+                document.getElementById("popup").classList.remove("hidden");
+            });
+        });
+
+        document.getElementById("close-popup").addEventListener("click", function () {
+            document.getElementById("popup").classList.add("hidden");
         });
     </script>
 </body>
